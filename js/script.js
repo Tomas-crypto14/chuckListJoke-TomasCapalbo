@@ -20,9 +20,10 @@ function chiste(){
     creabutton.addEventListener("click", () => {
         valor.remove();
         creabutton.remove();
-        localStorage.removeItem("Chiste" + [data.value]);
+        localStorage.removeItem("Chiste");
      });
     //Local Storage
+    //Se tiene que crear una variable de array para poder meter los datos.
     let array = JSON.parse(localStorage.getItem("Chiste")) || [];
     array.push(data.value);
     localStorage.setItem("Chiste", JSON.stringify(array));
