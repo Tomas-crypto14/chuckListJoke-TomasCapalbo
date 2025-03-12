@@ -26,7 +26,6 @@ function chiste(){
     localStorage.setItem("Chiste", data.value);
     const datos = localStorage.getItem("Chiste");
     console.log(datos);
-    //storage();
     })
 }
 button.addEventListener("click", chiste);
