@@ -27,5 +27,11 @@ button:hover {
   background-color: #0056b3;
 }
 
+#jokeList{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 
 

@@ -5,7 +5,7 @@ function chiste(){
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
-    const valor = document.createElement("li");
+    const valor = document.createElement("p");
     const creabutton = document.createElement("button");
     valor.innerHTML = data.value;
     creabutton.innerHTML = "Eliminar";
@@ -38,17 +38,4 @@ button.addEventListener("click", chiste);
     })
 }*/
 
-/*function eliminar(){
-    fetch (`https://api.chucknorris.io/jokes/random`)
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-    const valor = document.createElement("li");
-    const creabutton = document.createElement("button");
-    valor.innerHTML = data.value;
-        valor.remove();
-        creabutton.remove();
-        localStorage.removeItem("Chiste");
-    })
-}*/
 //creabutton.addEventListener("click", () => eliminar);
