@@ -23,10 +23,9 @@ function chiste(){
         localStorage.removeItem("Chiste");
      });
     //Local Storage
-    localStorage.setItem("Chiste", data.value);
-    const datos = localStorage.getItem("Chiste");
-    
-    console.log(datos);
+    let array = JSON.parse(localStorage.getItem("Chiste")) || [];
+    array.push(data.value);
+    localStorage.setItem("Chiste", JSON.stringify(array));
     })
     
 }
