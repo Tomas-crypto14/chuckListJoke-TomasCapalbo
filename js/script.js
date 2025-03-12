@@ -25,8 +25,10 @@ function chiste(){
     //Local Storage
     localStorage.setItem("Chiste", data.value);
     const datos = localStorage.getItem("Chiste");
+    datos.push();
     console.log(datos);
     })
+    
 }
 button.addEventListener("click", chiste);
 
