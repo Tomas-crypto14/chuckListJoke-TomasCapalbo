@@ -23,12 +23,10 @@ function chiste(){
         localStorage.removeItem("Chiste");
      });
     //Local Storage
-    //localStorage.setItem("Chiste", data.value);
-    const json = JSON.stringify(data.value);
-    console.log(json);
-    localStorage.setItem("Chiste", JSON.stringify(valor));
-    const almacenamiento = JSON.parse(localStorage.getItem("Chiste"));
-    console.log(almacenamiento);
+    localStorage.setItem("Chiste", data.value);
+    const datos = localStorage.getItem("Chiste");
+    
+    console.log(datos);
     })
     
 }
