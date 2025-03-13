@@ -13,10 +13,6 @@ function chiste(){
     const container = document.getElementById("jokeList");
     container.appendChild(valor);
     container.appendChild(creabutton);
-    //Funcion secundaria para borrar el chiste
-    //Como no aqui pide fetch secundario para hacer funciones secundarias, para lo de
-    //eliminar se hace de esa manera
-    //Ese click de addEventListener llama al boton de creabutton
     
     //Local Storage
     //Se tiene que crear una variable de array para poder meter los datos.
@@ -26,11 +22,12 @@ function chiste(){
     array.push(data.value);
     localStorage.setItem("Chiste", JSON.stringify(array));
     console.log(array);
-
+        //Evento para eliminar el valor array del chiste.
     creabutton.addEventListener("click", () => {
         valor.remove();
         creabutton.remove();
         //Ese for es para eliminar objetos en un array
+        let i;
         for (i = 0; i <= array.length; i++ ){
             localStorage.removeItem(array[i]);
             localStorage.setItem("Chiste", JSON.stringify(array));
