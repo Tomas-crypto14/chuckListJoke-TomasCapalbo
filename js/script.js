@@ -7,6 +7,7 @@ function chiste(){
         console.log(data);
     const valor = document.createElement("p");
     const creabutton = document.createElement("button");
+    creabutton.setAttribute("id", data.id)
     valor.innerHTML = data.value;
     creabutton.innerHTML = "Eliminar";
     creabutton.style.background = "Red";
@@ -19,19 +20,23 @@ function chiste(){
     //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
     //fuera de JSON, hay que ir a Application y eliminarlo.
     let array = JSON.parse(localStorage.getItem("Chiste")) || [];
-    array.push(data.value);
+    array.push({joke: data.value, id: data.id});
     localStorage.setItem("Chiste", JSON.stringify(array));
     console.log(array);
         //Evento para eliminar el valor array del chiste.
-    creabutton.addEventListener("click", () => {
+    creabutton.addEventListener("click", (event) => {
+        const idABorrar = event.target.id;
         valor.remove();
         creabutton.remove();
         //Ese for es para eliminar objetos en un array
-        let i;
-        for (i = 0; i <= array.length; i++ ){
-            localStorage.removeItem(array[i]);
-            localStorage.setItem("Chiste", JSON.stringify(array));
+        localStorage.clear()
+        const newArray = []
+        for (let i = 0; i < array.length; i++ ){
+            if(array[i].id != idABorrar){
+                newArray.push(array[i])
+            }
         }
+        localStorage.setItem("Chiste", JSON.stringify(newArray))
      });
     })
     
