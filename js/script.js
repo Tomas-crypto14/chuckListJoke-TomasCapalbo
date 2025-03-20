@@ -45,6 +45,6 @@ function chiste(){
     
 }
 button.addEventListener("click", chiste);
-document.addEventListener("DOMContentLoaded", chiste);
+//document.addEventListener("DOMContentLoaded", chiste);
 
 //creabutton.addEventListener("click", () => eliminar);
