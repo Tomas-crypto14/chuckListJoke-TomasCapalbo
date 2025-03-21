@@ -1,6 +1,7 @@
 const button = document.getElementById("fetchJoke");
 const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
+const canva = document.getElementById("GraficoChiste");
 function chiste(){
     fetch (`https://api.chucknorris.io/jokes/random`)
     .then((response) => response.json())
@@ -16,7 +17,26 @@ function chiste(){
     const container = document.getElementById("jokeList");
     container.appendChild(valor);
     container.appendChild(creabutton);
-    
+    const canva = document.getElementById("GraficoChiste");
+    const datos = {
+        labels: [data.id],
+        datasets: [{
+            label: 'Longitud de los chistes',
+            data: [data.value.length],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    }
+    const Grafico = new Chart(canva, {
+        type: 'bar',
+        data: datos,
+        options: {
+            scales: {
+
+            }
+        }
+    })
     //Local Storage
     //Se tiene que crear una variable de array para poder meter los datos.
     //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
