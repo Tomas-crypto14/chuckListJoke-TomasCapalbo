@@ -29,15 +29,14 @@ function chiste(){
         valor.remove();
         creabutton.remove();
         //Ese for es para eliminar objetos en un array
-        //localStorage.clear()
         const newArray = [];
         for (let i = 0; i < array.length; i++) {
             if(array[i].id !== idABorrar){
                 //console.log(array[i].id);
                 newArray.push(array[i]);
-                //array = newArray;
             }
         }
+        console.log(newArray);
         localStorage.setItem("Chiste", JSON.stringify(newArray));
         //array = newArray;
      });
