@@ -17,7 +17,7 @@ function chiste(){
     const container = document.getElementById("jokeList");
     container.appendChild(valor);
     container.appendChild(creabutton);
-    const canva = document.getElementById("GraficoChiste");
+    const canva = document.getElementById("GraficoChiste").getContext('2d');
     const datos = {
         labels: [data.id],
         datasets: [{
@@ -28,7 +28,7 @@ function chiste(){
             borderWidth: 1
         }]
     }
-    const Grafico = new Chart(canva, {
+    new Chart(canva, {
         type: 'bar',
         data: datos,
         options: {
@@ -36,7 +36,7 @@ function chiste(){
 
             }
         }
-    })
+    });
     //Local Storage
     //Se tiene que crear una variable de array para poder meter los datos.
     //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
