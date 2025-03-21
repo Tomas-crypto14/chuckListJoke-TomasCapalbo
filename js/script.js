@@ -1,4 +1,5 @@
 const button = document.getElementById("fetchJoke");
+const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
 function chiste(){
     fetch (`https://api.chucknorris.io/jokes/random`)
@@ -7,7 +8,8 @@ function chiste(){
         console.log(data);
     const valor = document.createElement("p");
     const creabutton = document.createElement("button");
-    creabutton.setAttribute("id", data.id)
+    creabutton.setAttribute("id", data.id);
+    valor.setAttribute("id", "valor");
     valor.innerHTML = data.value;
     creabutton.innerHTML = "Eliminar";
     creabutton.style.background = "Red";
@@ -47,3 +49,8 @@ button.addEventListener("click", chiste);
 //document.addEventListener("DOMContentLoaded", chiste);
 
 //creabutton.addEventListener("click", () => eliminar);
+
+function borrartodo(){
+    localStorage.clear();
+}
+borrar.addEventListener("click", () => borrartodo())
