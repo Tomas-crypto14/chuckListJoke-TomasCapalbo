@@ -41,6 +41,7 @@ function chiste(){
     //Se tiene que crear una variable de array para poder meter los datos.
     //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
     //fuera de JSON, hay que ir a Application y eliminarlo.
+    //cargarChistes(data.value);
     let array = JSON.parse(localStorage.getItem("Chiste")) || [];
     array.push({joke: data.value, id: data.id});
     localStorage.setItem("Chiste", JSON.stringify(array));
@@ -70,6 +71,12 @@ button.addEventListener("click", chiste);
 
 //creabutton.addEventListener("click", () => eliminar);
 
+/*function cargarChistes(chiste){
+    let array = JSON.parse(localStorage.getItem("Chiste")) || [];
+    array.push(chiste);
+    localStorage.setItem("Chiste", JSON.stringify(array));
+
+}*/
 function borrartodo(){
     localStorage.clear();
 }
