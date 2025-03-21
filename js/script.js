@@ -2,7 +2,7 @@ const button = document.getElementById("fetchJoke");
 const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
 const canva = document.getElementById("GraficoChiste");
-let grafico;
+let grafico = null; //Varuable para almacenar la instancia, null hace que no se queje si eliminamos el chart.
 function chiste(){
     fetch (`https://api.chucknorris.io/jokes/random`)
     .then((response) => response.json())
@@ -21,7 +21,7 @@ function chiste(){
 
     //Gráfica
         //Destruye la gráfica si existe, se recomienda el let de este valor desde fuera
-        //de la función
+        //de la función porque el let para llamar a la función del if con el mismo nombre
     if (grafico) {
         grafico.destroy();
     }
