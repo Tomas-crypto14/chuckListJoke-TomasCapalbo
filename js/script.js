@@ -53,4 +53,4 @@ button.addEventListener("click", chiste);
 function borrartodo(){
     localStorage.clear();
 }
-borrar.addEventListener("click", () => borrartodo())
+borrar.addEventListener("click", () => borrartodo());
