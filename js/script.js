@@ -2,6 +2,7 @@ const button = document.getElementById("fetchJoke");
 const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
 const canva = document.getElementById("GraficoChiste");
+let grafico;
 function chiste(){
     fetch (`https://api.chucknorris.io/jokes/random`)
     .then((response) => response.json())
@@ -17,7 +18,15 @@ function chiste(){
     const container = document.getElementById("jokeList");
     container.appendChild(valor);
     container.appendChild(creabutton);
+
+    //Gráfica
+        //Destruye la gráfica si existe, se recomienda el let de este valor desde fuera
+        //de la función
+    if (grafico) {
+        grafico.destroy();
+    }
     const canva = document.getElementById("GraficoChiste").getContext('2d');
+    
     const datos = {
         labels: [data.id],
         datasets: [{
@@ -28,7 +37,8 @@ function chiste(){
             borderWidth: 1
         }]
     }
-    new Chart(canva, {
+
+    grafico = new Chart(canva, {
         type: 'bar',
         data: datos,
         options: {
@@ -37,6 +47,7 @@ function chiste(){
             }
         }
     });
+
     //Local Storage
     //Se tiene que crear una variable de array para poder meter los datos.
     //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
