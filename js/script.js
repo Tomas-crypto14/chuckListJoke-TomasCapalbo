@@ -43,7 +43,13 @@ function chiste(){
         data: datos,
         options: {
             scales: {
-
+                x: {
+                    beginAtZero: true,
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
             }
         }
     });
