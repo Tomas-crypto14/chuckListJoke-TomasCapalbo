@@ -2,7 +2,7 @@ const button = document.getElementById("fetchJoke");
 const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
 const canva = document.getElementById("GraficoChiste");
-let grafico = null; //Varuable para almacenar la instancia, null hace que no se queje si eliminamos el chart.
+let grafico = null; //Variable para almacenar la instancia, null hace que no se queje si eliminamos el chart.
 function chiste(){
     fetch (`https://api.chucknorris.io/jokes/random`)
     .then((response) => response.json())
