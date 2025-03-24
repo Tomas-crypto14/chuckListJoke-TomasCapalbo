@@ -3,6 +3,13 @@ const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
 const canva = document.getElementById("GraficoChiste");
 let grafico = null; //Variable para almacenar la instancia, null hace que no se queje si eliminamos el chart.
+function storage(){
+    //Destruye la gráfica si existe, se recomienda el let de este valor desde fuera
+    //de la función porque el let para llamar a la función del if con el mismo nombre
+    if (grafico){
+        grafico.destroy();
+    }
+}
 function chiste(){
     fetch (`https://api.chucknorris.io/jokes/random`)
     .then((response) => response.json())
@@ -22,9 +29,7 @@ function chiste(){
     //Gráfica
         //Destruye la gráfica si existe, se recomienda el let de este valor desde fuera
         //de la función porque el let para llamar a la función del if con el mismo nombre
-    if (grafico) {
-        grafico.destroy();
-    }
+    storage();
     const canva = document.getElementById("GraficoChiste").getContext('2d');
     
     const datos = {
