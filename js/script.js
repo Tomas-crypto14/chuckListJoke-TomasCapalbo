@@ -68,9 +68,6 @@ function chiste(){
         const idABorrar = event.target.id;
         valor.remove();
         creabutton.remove();
-        if (grafico){
-            grafico.destroy();
-        }
         //Ese for es para eliminar objetos en un array
         const newArray = [];
         for (let i = 0; i < array.length; i++) {
