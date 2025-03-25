@@ -1,7 +1,8 @@
+//Función para pintar la cajita del chiste junto con el boton
+//Función para pintar los gráficos
 const button = document.getElementById("fetchJoke");
 const borrar = document.getElementById("deleteJoke")
 const lista = document.getElementById("jokeList");
-const canva = document.getElementById("GraficoChiste");
 let grafico = null; //Variable para almacenar la instancia, null hace que no se queje si eliminamos el chart.
 function storage(){
     //Destruye la gráfica si existe, se recomienda el let de este valor desde fuera
@@ -15,28 +16,44 @@ function chiste(){
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
-    const valor = document.createElement("p");
-    const creabutton = document.createElement("button");
-    creabutton.setAttribute("id", data.id);
-    valor.setAttribute("id", "valor");
-    valor.innerHTML = data.value;
-    creabutton.innerHTML = "Eliminar";
-    creabutton.style.background = "Red";
+    //Los valores tienen que tener nombres descriptivos.
+    const valorchiste = document.createElement("p");
+    const creabuttonchiste = document.createElement("button");
+    creabuttonchiste.setAttribute("id", data.id);
+    valorchiste.setAttribute("id", "valor");
+    valorchiste.innerHTML = data.value;
+    creabuttonchiste.innerHTML = "Eliminar";
+    creabuttonchiste.style.background = "Red";
     const container = document.getElementById("jokeList");
-    container.appendChild(valor);
-    container.appendChild(creabutton);
+    container.appendChild(valorchiste);
+    container.appendChild(creabuttonchiste);
 
     //Gráfica
         //Destruye la gráfica si existe, se recomienda el let de este valor desde fuera
         //de la función porque el let para llamar a la función del if con el mismo nombre
     storage();
-    const canva = document.getElementById("GraficoChiste").getContext('2d');
+
+    //Local Storage
+    //Se tiene que crear una variable de array para poder meter los datos.
+    //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
+    //fuera de JSON, hay que ir a Application y eliminarlo.
+    //cargarChistes(data.value);
+    let array = JSON.parse(localStorage.getItem("Chiste")) || [];
+    array.push({joke: data.value, id: data.id});
+    localStorage.setItem("Chiste", JSON.stringify(array));
+
+    //Esos dos valores, labels y lengths junto con array.map sirven para recorrer el array y meter las gráficas con los
+    //chistes actuales que hay en el LocalStorage.
+    labels = array.map(chiste => chiste.id);
+    lengths = array.map(chiste => chiste.joke.length);
     
+    const canva = document.getElementById("GraficoChiste").getContext('2d');
+
     const datos = {
-        labels: [data.id],
+        labels: labels,
         datasets: [{
             label: 'Longitud de los chistes',
-            data: [data.value.length],
+            data: lengths,
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
@@ -59,20 +76,15 @@ function chiste(){
         }
     });
 
-    //Local Storage
-    //Se tiene que crear una variable de array para poder meter los datos.
-    //Si hay un error de "Unexpected Token", eso quiere decir que ha habido un valor
-    //fuera de JSON, hay que ir a Application y eliminarlo.
-    //cargarChistes(data.value);
-    let array = JSON.parse(localStorage.getItem("Chiste")) || [];
-    array.push({joke: data.value, id: data.id});
-    localStorage.setItem("Chiste", JSON.stringify(array));
     console.log(array);
         //Evento para eliminar el valor array del chiste.
-    creabutton.addEventListener("click", (event) => {
+    
+    creabuttonchiste.addEventListener("click", (event) => {
+        //Se tiene que recargar el array cuando se elimina el boton
+        let array = JSON.parse(localStorage.getItem("Chiste")) || [];
         const idABorrar = event.target.id;
-        valor.remove();
-        creabutton.remove();
+        valorchiste.remove();
+        creabuttonchiste.remove();
         //Ese for es para eliminar objetos en un array
         const newArray = [];
         for (let i = 0; i < array.length; i++) {
