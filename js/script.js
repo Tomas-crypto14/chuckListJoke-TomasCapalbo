@@ -39,8 +39,6 @@ function chiste(){
     //fuera de JSON, hay que ir a Application y eliminarlo.
     almacenamientochistes(data);
     let array = JSON.parse(localStorage.getItem("Chiste")) || [];
-    //array.push({joke: data.value, id: data.id});
-    //localStorage.setItem("Chiste", JSON.stringify(array));
     //Esos dos valores, labels y lengths junto con array.map sirven para recorrer el array y meter las gráficas con los
     //chistes actuales que hay en el LocalStorage.
     almacenamientografica(data);
