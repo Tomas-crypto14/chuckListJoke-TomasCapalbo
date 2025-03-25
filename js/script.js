@@ -80,7 +80,7 @@ function chiste(){
         //Evento para eliminar el valor array del chiste.
     
     creabuttonchiste.addEventListener("click", (event) => {
-        //Se tiene que recargar el array cuando se elimina el boton
+        //Se tiene que recargar el array cuando se elimina un chiste.
         let array = JSON.parse(localStorage.getItem("Chiste")) || [];
         const idABorrar = event.target.id;
         valorchiste.remove();
