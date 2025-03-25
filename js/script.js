@@ -46,35 +46,6 @@ function chiste(){
     almacenamientografica(data);
     //labels = array.map(chiste => chiste.id);
     //lengths = array.map(chiste => chiste.joke.length);
-    /*const canva = document.getElementById("GraficoChiste").getContext('2d');
-
-    const datos = {
-        labels: labels,
-        datasets: [{
-            label: 'Longitud de los chistes',
-            data: lengths,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
-    }
-
-    grafico = new Chart(canva, {
-        type: 'bar',
-        data: datos,
-        options: {
-            scales: {
-                x: {
-                    beginAtZero: true,
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
-            }
-        }
-    });*/
-
     console.log(array);
         //Evento para eliminar el valor array del chiste.
     
@@ -122,7 +93,7 @@ function almacenamientografica(){
         datasets: [{
             label: 'Longitud de los chistes',
             data: lengths,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            backgroundColor: [Math.floor(Math.random() * 16)],
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1
         }]
